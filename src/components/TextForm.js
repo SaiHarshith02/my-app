@@ -14,10 +14,8 @@ export default function TextForm(props) {
         props.handleAlert("success","Text Converted To Lower Case")
     }
     const handleCopy=()=>{
-        var text=document.getElementById("mybox");
-        text.select()
-        navigator.clipboard.writeText(text.value)
-        props.handleAlert("success","Text Copyed")
+        navigator.clipboard.writeText(Text)
+        props.handleAlert("success","Text Copyed To Clipbord")
     }
     const handleSpaces=()=>{
         let regx=/  */g
@@ -41,19 +39,19 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className={`form-control text-${props.mode==="light"?"dark":"light"}`} id="mybox" rows="8"  value={Text} onChange={handleChange} data-bs-theme={props.mode}></textarea>
             </div>
-            <button className="btn btn-primary my-2 " onClick={handleUpper}>Convert to Upper Case</button>
-            <button className="btn btn-primary my-2 mx-2" onClick={handleLower}>Convert to Lower Case</button>
-            <button className="btn btn-primary my-2 mx-2" onClick={handleCopy}>Copy Text</button>
-            <button className="btn btn-primary my-2 mx-2"onClick={handleSpaces}>Remove Extra Spaces</button>
-            <button className="btn btn-primary my-2 mx-2 "onClick={handleClear}>Clear Text</button>
-            <button type="submit" onClick={speak} className="btn btn-danger mx-2 my-2">Speak</button>
+            <button disabled={Text.length===0} className="btn btn-primary my-2 " onClick={handleUpper}>Convert to Upper Case</button>
+            <button disabled={Text.length===0}  className="btn btn-primary my-2 mx-2" onClick={handleLower}>Convert to Lower Case</button>
+            <button disabled={Text.length===0}  className="btn btn-primary my-2 mx-2" onClick={handleCopy}>Copy Text</button>
+            <button disabled={Text.length===0}  className="btn btn-primary my-2 mx-2"onClick={handleSpaces}>Remove Extra Spaces</button>
+            <button disabled={Text.length===0}  className="btn btn-primary my-2 mx-2 "onClick={handleClear}>Clear Text</button>
+            <button disabled={Text.length===0}  type="submit" onClick={speak} className="btn btn-danger mx-2 my-2">Speak</button>
         </div>
         <div className={`container my-3 text-${props.mode==="light"?"dark":"light"}`}>
             <h4>Text Summary</h4>
-            <p>{Text.split(" ").filter((element)=>{return element.length!==0}).length} Words and {Text.length} Characters</p>
-            <p>{0.008* Text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to Read</p> 
+            <p>{Text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Words and {Text.length} Characters</p>
+            <p>{0.008* Text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes to Read</p> 
             <h4>Preview</h4> 
-            <p>{Text.length>0?Text:"Enter text in text box to preview"}</p>  
+            <p>{Text.length>0?Text:"Nothing to preview"}</p>  
         </div>
     </>
   )
