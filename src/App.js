@@ -1,7 +1,8 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import './App.css';
 import Navbar from './components/Navbar';
@@ -36,22 +37,23 @@ const handleMode=()=>{
 }
   return (
     <>
-        {/* <Navbar mode={mode} handleMode={handleMode} />
-        <Alert newAlert={newAlert}/>
-        <div className="container my-2" >
-         <TextForm mode={mode} handleAlert={handleAlert}/>
-        </div>
-        <div className="container">
-        <About mode={mode} />
-        </div> */}
-        <Router>
+    <Router> 
+      <Navbar mode={mode} handleMode={handleMode} />
+       <Alert newAlert={newAlert} /> <div className="container my-2">
+         <Routes> 
+          <Route path="/" element={<TextForm mode={mode} handleAlert={handleAlert} />} /> 
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route path="*" element={<Navigate to="/" />} /> 
+        </Routes> </div> 
+    </Router>
+        {/* <Router>
            <Navbar mode={mode} handleMode={handleMode} />
             <Alert newAlert={newAlert} /> <div className="container my-2"> 
               <Routes> 
                 <Route path="/about" element={<About mode={mode}/>} /> 
                 <Route path="/" element={<TextForm mode={mode} handleAlert={handleAlert} />} /> 
                 </Routes> </div> 
-                </Router>
+                </Router> */}
     </>
   );
 }
