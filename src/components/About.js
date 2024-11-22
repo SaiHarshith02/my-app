@@ -17,7 +17,7 @@ export default function About(props) {
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show"style={mystyle} data-bs-parent="#accordionExample">
       <div class="accordion-body" style={mystyle}>
-      Description: Our TextUtils application is completely free for everyone. There are no hidden charges or premium features locked behind paywalls. Whether you need to perform quick text transformations, count characters, or analyze content, all features are available at no cost. Enjoy unlimited access and transform your text efficiently without any financial burden!
+       Our TextUtils application is completely free for everyone. There are no hidden charges or premium features locked behind paywalls. Whether you need to perform quick text transformations, count characters, or analyze content, all features are available at no cost. Enjoy unlimited access and transform your text efficiently without any financial burden!
       </div>
     </div>
   </div>
